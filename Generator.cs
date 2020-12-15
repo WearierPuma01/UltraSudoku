@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
         }
         private Generator swapRowsSmall(int number_one, int number_two)
         {
-            return null;
+            return null; // проверка
         }
         private Generator swapColumsSmall(int number_one, int number_two)
         {
