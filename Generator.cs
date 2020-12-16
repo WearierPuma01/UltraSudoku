@@ -8,9 +8,7 @@ namespace WindowsFormsApp1
 {
     static class Generator
     {
-        
-
-
+        //Генерация базового поля
         public static int[,] generator()
         {
             int[,] matrix = new int[9, 9];
@@ -33,6 +31,7 @@ namespace WindowsFormsApp1
             }
             return matrix;
         }
+
         //Алгоритмы шафла базовой матрицы
         private static void transposing(int[,] matrix, int number) //транспонирование матрицы
         {
@@ -49,6 +48,7 @@ namespace WindowsFormsApp1
             }
             
         }
+
         private static void swapRowsSmall(int[,] matrix, int number_one, int number_two) //перестановка строк
         {
             int temp;
@@ -60,6 +60,7 @@ namespace WindowsFormsApp1
             }
             
         }
+
         private static void swapColumsSmall(int[,] matrix, int number_one, int number_two) //перестановка столбцов
         {
             int temp;
@@ -70,6 +71,7 @@ namespace WindowsFormsApp1
                 matrix[i, number_two] = temp;
             }
         }
+
         private static void swapRowsArea(int[,] matrix, int number_one, int number_two) //перестановкак зон(строк)
         {
             int temp1, temp2, temp3;
@@ -85,8 +87,8 @@ namespace WindowsFormsApp1
                 matrix[number_two * 3 + 1, i] = temp2;
                 matrix[number_two * 3 + 2, i] = temp3;
             }
+        }
 
-            }
         private static void swapColumsArea(int[,] matrix, int number_one, int number_two) //перестановка зон(строк)
         {
             int temp1, temp2, temp3;
@@ -101,6 +103,28 @@ namespace WindowsFormsApp1
                 matrix[i, number_two * 3] = temp1;
                 matrix[i, number_two * 3 + 1] = temp2;
                 matrix[i, number_two * 3 + 2] = temp3;
+            }
+        }
+        
+        private static void deleteCell(int[,] matrix, int difficulty)
+        {
+            Random delRan = new Random();
+            int deli;
+            int delj;
+            for (int count = 0; count < difficulty; count++)
+            {
+                while (true)
+                {
+                    deli = delRan.Next(0, 9);
+                    delj = delRan.Next(0, 9);
+                    if (matrix[deli, delj] == 0)
+                        continue;
+                    matrix[deli, delj] = 0;
+
+                }
+ 
+
+
             }
         }
 
