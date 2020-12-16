@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Generator
+    static class Generator
     {
-        int[,] matrix = new int[9, 9];
+        
 
 
-        public Generator()
+        public static int[,] generator()
         {
+            int[,] matrix = new int[9, 9];
             int i = 0;
             List<int> listNumeral = new List<int> {1, 2, 3, 4, 5, 6, 7, 8, 9};
             while (i != 8)
@@ -30,11 +31,12 @@ namespace WindowsFormsApp1
             {
                 matrix[i, j] = listNumeral[j];
             }
+            return matrix;
         }
-
-        private Generator transposing(int number)
+        //Алгоритмы шафла базовой матрицы
+        private static void transposing(int[,] matrix, int number) //транспонирование матрицы
         {
-            if (number == 0) return this;
+            if (number == 0) return ;
             int temp;
             for (int i = 0; i < 9; i++)
             {
@@ -45,23 +47,61 @@ namespace WindowsFormsApp1
                     matrix[j, i] = temp;
                 }
             }
-            return this;
+            
         }
-        private Generator swapRowsSmall(int number_one, int number_two)
+        private static void swapRowsSmall(int[,] matrix, int number_one, int number_two) //перестановка строк
         {
-            return null; // проверка
+            int temp;
+            for (int i = 0; i < 9; i++)
+            {
+                temp = matrix[number_one, i];
+                matrix[number_one, i] = matrix[number_two, i];
+                matrix[number_two, i] = temp;
+            }
+            
         }
-        private Generator swapColumsSmall(int number_one, int number_two)
+        private static void swapColumsSmall(int[,] matrix, int number_one, int number_two) //перестановка столбцов
         {
-            return null;
+            int temp;
+            for (int i = 0; i < 9; i++)
+            {
+                temp = matrix[i, number_one];
+                matrix[i, number_one] = matrix[i, number_two];
+                matrix[i, number_two] = temp;
+            }
         }
-        private Generator swapRowsArea(int number_one, int number_two)
+        private static void swapRowsArea(int[,] matrix, int number_one, int number_two) //перестановкак зон(строк)
         {
-            return null;
-        }
-        private Generator swapColumsArea(int number_one, int number_two)
+            int temp1, temp2, temp3;
+            for (int i = 0; i < 9; i++)
+            {
+                temp1 = matrix[number_one * 3, i];
+                temp2 = matrix[number_one * 3 + 1, i];
+                temp3 = matrix[number_one * 3 + 2, i];
+                matrix[number_one * 3, i] = matrix[number_two*3, i];
+                matrix[number_one * 3 + 1, i] = matrix[number_two * 3 + 1, i];
+                matrix[number_one * 3 + 2, i] = matrix[number_two * 3 + 2, i];
+                matrix[number_two * 3, i] = temp1;
+                matrix[number_two * 3 + 1, i] = temp2;
+                matrix[number_two * 3 + 2, i] = temp3;
+            }
+
+            }
+        private static void swapColumsArea(int[,] matrix, int number_one, int number_two) //перестановка зон(строк)
         {
-            return null;
+            int temp1, temp2, temp3;
+            for (int i = 0; i < 9; i++)
+            {
+                temp1 = matrix[i, number_one * 3];
+                temp2 = matrix[i, number_one * 3 + 1];
+                temp3 = matrix[i, number_one * 3 + 2];
+                matrix[i, number_one * 3] = matrix[i, number_two * 3];
+                matrix[i, number_one * 3 + 1] = matrix[i, number_two * 3 + 1];
+                matrix[i, number_one * 3 + 2] = matrix[i, number_two * 3 + 2];
+                matrix[i, number_two * 3] = temp1;
+                matrix[i, number_two * 3 + 1] = temp2;
+                matrix[i, number_two * 3 + 2] = temp3;
+            }
         }
 
         
