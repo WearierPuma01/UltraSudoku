@@ -9,7 +9,7 @@ namespace WindowsFormsApp1
     static class Generator
     {
         //Генерация базового поля
-        public static int[,] generator()
+        public static int[,] generator() //генерация базового поля [ok]
         {
             int[,] matrix = new int[9, 9];
             int i = 0;
@@ -32,8 +32,8 @@ namespace WindowsFormsApp1
             return matrix;
         }
 
-        //Алгоритмы шафла базовой матрицы
-        private static void transposing(int[,] matrix, int number) //транспонирование матрицы
+        //Алгоритмы шафла базовой матрицы [ok]
+        private static void transposing(int[,] matrix, int number) //транспонирование матрицы [ok]
         {
             if (number == 0) return ;
             int temp;
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
             
         }
 
-        private static void swapRowsSmall(int[,] matrix, int number_one, int number_two) //перестановка строк
+        private static void swapRowsSmall(int[,] matrix, int number_one, int number_two) //перестановка строк [ok]
         {
             int temp;
             for (int i = 0; i < 9; i++)
@@ -61,7 +61,7 @@ namespace WindowsFormsApp1
             
         }
 
-        private static void swapColumsSmall(int[,] matrix, int number_one, int number_two) //перестановка столбцов
+        private static void swapColumsSmall(int[,] matrix, int number_one, int number_two) //перестановка столбцов [ok]
         {
             int temp;
             for (int i = 0; i < 9; i++)
@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private static void swapRowsArea(int[,] matrix, int number_one, int number_two) //перестановкак зон(строк)
+        private static void swapRowsArea(int[,] matrix, int number_one, int number_two) //перестановкак зон(строк) [ok]
         {
             int temp1, temp2, temp3;
             for (int i = 0; i < 9; i++)
@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private static void swapColumsArea(int[,] matrix, int number_one, int number_two) //перестановка зон(строк)
+        private static void swapColumsArea(int[,] matrix, int number_one, int number_two) //перестановка зон(строк) [ok]
         {
             int temp1, temp2, temp3;
             for (int i = 0; i < 9; i++)
@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
             }
         }
         
-        private static void deleteCell(int[,] matrix, int difficulty)
+        private static void deleteCell(int[,] matrix, int difficulty) //удаление элементов в зависимости от выбранной сложности [...]
         {
             Random delRan = new Random();
             int deli;

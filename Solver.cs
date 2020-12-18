@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    
+
     static class Solver //решатель
     {
-        
-
         public static bool countOfSolves(int[,] matrix) //проверка наличия решения и его единственность [ok]
         {
             int count_of_solves = 0;
@@ -21,6 +19,13 @@ namespace WindowsFormsApp1
             else
                 return false;
         }
+
+        public static int[,] sudokuHelper (int[,] matrix_input) //решение поля судоку (возвращает решенную матрицу судоку, не изменяет изначальной) [ok]
+            {
+            int[,] matrix = matrix_input;
+            sHelper(matrix);
+            return matrix;
+            }
 
         private static bool cOS(int[,] matrix_input, int count_of_solves) //подсчет количества решений [!!! ПРОВЕРИТЬ АЛГОРИТМ !!!] 
         {
@@ -37,6 +42,26 @@ namespace WindowsFormsApp1
                 {
                     matrix[row, col] = num;
                     cOS(matrix, count_of_solves); 
+                    matrix[row, col] = 0;
+                }
+            }
+            return false;
+        }
+
+        private static bool sHelper(int[,] matrix) //решатель поля судоку (правильная работа, только при условии что поле верно) [!!! ПРОВЕРИТЬ АЛГОРИТМ !!!]
+        {
+            int row = 0, col = 0;
+            if (!findEmptyCords(matrix, row, col))
+            {
+                return true;
+            }
+            for (int num = 1; num <= 9; num++)
+            {
+                if (isCorrectNum(matrix, row, col, num))
+                {
+                    matrix[row, col] = num;
+                    if (sHelper(matrix))
+                        return true;
                     matrix[row, col] = 0;
                 }
             }
