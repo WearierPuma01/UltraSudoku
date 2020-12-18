@@ -111,6 +111,7 @@ namespace WindowsFormsApp1
             Random delRan = new Random();
             int deli;
             int delj;
+            int temp;
             for (int count = 0; count < difficulty; count++)
             {
                 while (true)
@@ -119,6 +120,7 @@ namespace WindowsFormsApp1
                     delj = delRan.Next(0, 9);
                     if (matrix[deli, delj] == 0)
                         continue;
+                    temp = matrix[deli, delj];
                     matrix[deli, delj] = 0;
 
                 }
