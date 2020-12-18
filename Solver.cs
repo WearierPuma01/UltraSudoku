@@ -21,11 +21,11 @@ namespace WindowsFormsApp1
         }
 
         public static int[,] sudokuHelper (int[,] matrix_input) //решение поля судоку (возвращает решенную матрицу судоку, не изменяет изначальной) [ok]
-            {
+        {
             int[,] matrix = matrix_input;
             sHelper(matrix);
             return matrix;
-            }
+        }
 
         private static bool cOS(int[,] matrix_input, int count_of_solves) //подсчет количества решений [!!! ПРОВЕРИТЬ АЛГОРИТМ !!!] 
         {

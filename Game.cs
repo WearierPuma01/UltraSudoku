@@ -10,11 +10,22 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class Game : Form
     {
-        public Form1()
+        int difficulty;
+        public Game()
         {
             InitializeComponent();
+        }
+
+        public Game(int outsideDifficulty)
+        {
+            difficulty = outsideDifficulty;
+            InitializeComponent();
+        }
+        private void Game_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
