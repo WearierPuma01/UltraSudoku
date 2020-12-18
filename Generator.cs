@@ -106,30 +106,49 @@ namespace WindowsFormsApp1
             }
         }
         
-        private static void deleteCell(int[,] matrix, int difficulty) //удаление элементов в зависимости от выбранной сложности [...]
+        private static void deleteCell(int[,] matrix, int difficultyGrade) //удаление элементов в зависимости от выбранной сложности [!!! ok НО МОЖНО И ПРОВЕРИТЬ !!!]
         {
+            int temp, cordsToDel, difficulty=0;
+            List<int> listCords = new List<int> { };
+            switch(difficultyGrade)
+            {
+                case 1:
+                    difficulty = 41;
+                    break;
+                case 2:
+                    difficulty = 46;
+                    break;
+                case 3:
+                    difficulty = 53;
+                    break;
+                case 4:
+                    difficulty = 39;
+                    break;
+                case 5:
+                    difficulty = 61;
+                    break;
+            }
+            for (int i=11;i<100;i++)
+            {
+                if (i % 10 == 0)
+                    continue;
+                listCords.Add(i);
+            }
             Random delRan = new Random();
-            int deli;
-            int delj;
-            int temp;
             for (int count = 0; count < difficulty; count++)
             {
                 while (true)
                 {
-                    deli = delRan.Next(0, 9);
-                    delj = delRan.Next(0, 9);
-                    if (matrix[deli, delj] == 0)
-                        continue;
-                    temp = matrix[deli, delj];
-                    matrix[deli, delj] = 0;
-
+                    cordsToDel = listCords[delRan.Next(0, listCords.Count)];
+                    temp = matrix[cordsToDel / 10, cordsToDel % 10];
+                    matrix[cordsToDel / 10, cordsToDel % 10] = 0;
+                    listCords.Remove(cordsToDel);
+                    if (Solver.countOfSolves(matrix))
+                        break;
+                    matrix[cordsToDel / 10, cordsToDel % 10] = temp;
                 }
- 
-
-
             }
         }
-
         
     }
 }
