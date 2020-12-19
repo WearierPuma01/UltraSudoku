@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
                 i %= 8;
                 for (int j = 0; j < 9; j++)
                 {
-                    matrix[j,i] = listNumeral[j];
+                    matrix[i,j] = listNumeral[j];
                 }
                 listNumeral.Add(listNumeral[0]);
                 listNumeral.RemoveAt(0);
@@ -27,32 +27,37 @@ namespace WindowsFormsApp1
             }
             for (int j = 0; j < 9; j++)
             {
-                matrix[j, i] = listNumeral[j];
+                matrix[i, j] = listNumeral[j];
             }
             genField(matrix, difficultyGrade);
             return matrix;
         }
         private static void genField(int[,] matrix, int difficultyGrade)
         {
-            //matrixShafle(matrix);
-            deleteCell(matrix, difficultyGrade);
+            matrixShafle(matrix);
+          // deleteCell(matrix, difficultyGrade);
 
         }
         private static void matrixShafle(int[,] matrix) //Шафл всей матрицы
         {
-            DateTime start = new DateTime();
-            
-            for (int i = 0; i <= start.Second; i++)
+            DateTime start =  DateTime.Now;
+            transposing(matrix, (start.Second % 2));
+            for (int i = 0; i <= 1000/*start.Second + 10*/; i++)
             {
-                transposing(matrix, (start.Day % 2));
                 swapRowsSmall(matrix, (start.Hour % 3), (start.Minute % 3));
-                transposing(matrix, (start.Hour % 2));
                 swapColumsSmall(matrix, (start.Year % 3), (start.Minute % 3));
-                transposing(matrix, (start.Second % 2));
                 swapRowsArea(matrix, (start.Minute % 3), (start.Second % 3));
-                transposing(matrix, (start.Minute % 2));
                 swapColumsArea(matrix, (start.Year % 3), (start.Second % 3));
-            } 
+                swapRowsSmall(matrix, ((start.Hour % 3) + 3), ((start.Minute % 3) + 3));
+                swapColumsSmall(matrix, ((start.Year % 3) + 3), (start.Minute % 3) + 3);
+                swapRowsArea(matrix, ((start.Minute % 3)), (start.Second % 3));
+                swapColumsArea(matrix, ((start.Year % 3)), (start.Second % 3));
+                swapRowsSmall(matrix, ((start.Hour % 3) + 6), ((start.Minute % 3) + 6));
+                swapColumsSmall(matrix, ((start.Year % 3) + 6), (start.Minute % 3) + 6);
+                swapRowsArea(matrix, ((start.Minute % 3)), (start.Second % 3));
+                swapColumsArea(matrix, ((start.Year % 3)), (start.Second % 3));
+                transposing(matrix, i % 2);
+            }
         }
         //Алгоритмы шафла базовой матрицы [ok]
         private static void transposing(int[,] matrix, int number) //транспонирование матрицы [ok]

@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
         {
             int[,] matrix = matrix_input;
             int row = 0, col = 0;
-            if (!findEmptyCords(matrix, row, col))
+            if (!findEmptyCords(matrix, out row, out col))
             {
                 count_of_solves++;
                 return true;
@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
         private static bool sHelper(int[,] matrix) //решатель поля судоку (правильная работа, только при условии что поле верно) [!!! ПРОВЕРИТЬ АЛГОРИТМ !!!]
         {
             int row = 0, col = 0;
-            if (!findEmptyCords(matrix, row, col))
+            if (!findEmptyCords(matrix, out row, out col))
             {
                 return true;
             }
@@ -68,8 +68,9 @@ namespace WindowsFormsApp1
             return false;
         }
 
-        private static bool findEmptyCords (int[,] matrix, int row, int col) //нахождение пустой клетки [ok]
+        private static bool findEmptyCords (int[,] matrix, out int row, out int col) //нахождение пустой клетки [ok]
         {
+            col = 0;
             for (row = 0; row < 9; row++)
                 for (col = 0; col < 9; col++)
                     if (matrix[row, col] == 0)
