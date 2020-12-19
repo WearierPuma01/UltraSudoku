@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
                 else
                     cell.Text = value.ToString();
 
-                cell.ForeColor = SystemColors.ControlDarkDark;
+                cell.ForeColor = Color.Black;
             }
         }
 
@@ -83,7 +83,8 @@ namespace WindowsFormsApp1
                 {
                     cells[i, j].Clear();
                     cells[i, j].Value = matrix[i,j];
-                    cells[i, j].Text = cells[i, j].Value.ToString();
+                    if (cells[i, j].Value!=0)
+                        cells[i, j].Text = cells[i, j].Value.ToString();
                     if (matrix[i, j] != 0)
                         cells[i, j].IsLocked = true;
                 }

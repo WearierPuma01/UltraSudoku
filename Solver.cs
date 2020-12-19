@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
         public static bool countOfSolves(int[,] matrix) //проверка наличия решения и его единственность [ok]
         {
             int count_of_solves = 0;
-            cOS(matrix, count_of_solves);
+            cOS(matrix, ref count_of_solves);
             if (count_of_solves == 1)
                 return true;
             else
@@ -26,9 +26,10 @@ namespace WindowsFormsApp1
             sHelper(matrix);
             return matrix;
         }
-
-        private static bool cOS(int[,] matrix_input, int count_of_solves) //подсчет количества решений [!!! ПРОВЕРИТЬ АЛГОРИТМ !!!] 
+       
+        private static bool cOS(int[,] matrix_input, ref int count_of_solves) //подсчет количества решений [ok] 
         {
+            
             int[,] matrix = matrix_input;
             int row = 0, col = 0;
             if (!findEmptyCords(matrix, out row, out col))
@@ -41,7 +42,7 @@ namespace WindowsFormsApp1
                 if(isCorrectNum(matrix, row, col, num))
                 {
                     matrix[row, col] = num;
-                    cOS(matrix, count_of_solves); 
+                    cOS(matrix, ref count_of_solves); 
                     matrix[row, col] = 0;
                 }
             }

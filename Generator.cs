@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
         private static void genField(int[,] matrix, int difficultyGrade)
         {
             matrixShafle(matrix);
-          // deleteCell(matrix, difficultyGrade);
+          deleteCell(matrix, difficultyGrade);
 
         }
         private static void matrixShafle(int[,] matrix) //Шафл всей матрицы
@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
                     difficulty = 53;
                     break;
                 case 4:
-                    difficulty = 39;
+                    difficulty = 56;
                     break;
                 case 5:
                     difficulty = 61;
@@ -169,7 +169,7 @@ namespace WindowsFormsApp1
                     cordsToDel = listCords[delRan.Next(0, listCords.Count())];
                     temp = matrix[cordsToDel / 10-1, cordsToDel % 10-1];
                     matrix[cordsToDel / 10-1, cordsToDel % 10-1] = 0;
-                    listCords.Remove(cordsToDel);
+                    //listCords.Remove(cordsToDel);
                     if (Solver.countOfSolves(matrix))
                         break;
                     matrix[cordsToDel / 10-1, cordsToDel % 10-1] = temp;
