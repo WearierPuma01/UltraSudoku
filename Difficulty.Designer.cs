@@ -37,9 +37,10 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 69);
+            this.label1.Location = new System.Drawing.Point(69, 56);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 17);
+            this.label1.Size = new System.Drawing.Size(118, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Выберите сложность:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -53,17 +54,19 @@
             "Средняя",
             "Сложная",
             "Самая сложная"});
-            this.checkedListBox1.Location = new System.Drawing.Point(95, 108);
+            this.checkedListBox1.Location = new System.Drawing.Point(71, 88);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(148, 106);
+            this.checkedListBox1.Size = new System.Drawing.Size(112, 79);
             this.checkedListBox1.TabIndex = 1;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(95, 231);
+            this.button1.Location = new System.Drawing.Point(71, 188);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 60);
+            this.button1.Size = new System.Drawing.Size(111, 49);
             this.button1.TabIndex = 2;
             this.button1.Text = "Начать";
             this.button1.UseVisualStyleBackColor = true;
@@ -71,12 +74,14 @@
             // 
             // Difficulty
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 450);
+            this.ClientSize = new System.Drawing.Size(248, 366);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "Difficulty";
             this.Text = "Difficulty";

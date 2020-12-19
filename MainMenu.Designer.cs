@@ -39,9 +39,10 @@ namespace WindowsFormsApp1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(348, 58);
+            this.label1.Location = new System.Drawing.Point(261, 47);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 17);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "MAIN MENU";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -49,9 +50,10 @@ namespace WindowsFormsApp1
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.Location = new System.Drawing.Point(300, 90);
+            this.button1.Location = new System.Drawing.Point(225, 73);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 47);
+            this.button1.Size = new System.Drawing.Size(143, 38);
             this.button1.TabIndex = 1;
             this.button1.Text = "Начать игру";
             this.button1.UseVisualStyleBackColor = true;
@@ -60,9 +62,10 @@ namespace WindowsFormsApp1
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.Location = new System.Drawing.Point(300, 143);
+            this.button2.Location = new System.Drawing.Point(225, 116);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(191, 47);
+            this.button2.Size = new System.Drawing.Size(143, 38);
             this.button2.TabIndex = 2;
             this.button2.Text = "Статистика игр";
             this.button2.UseVisualStyleBackColor = true;
@@ -70,9 +73,10 @@ namespace WindowsFormsApp1
             // button3
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.Location = new System.Drawing.Point(300, 196);
+            this.button3.Location = new System.Drawing.Point(225, 159);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(191, 47);
+            this.button3.Size = new System.Drawing.Size(143, 38);
             this.button3.TabIndex = 3;
             this.button3.Text = "Выход";
             this.button3.UseVisualStyleBackColor = true;
@@ -80,13 +84,15 @@ namespace WindowsFormsApp1
             // 
             // MainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "MainMenu";
             this.Text = "Судоку";

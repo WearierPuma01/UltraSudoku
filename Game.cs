@@ -10,48 +10,27 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
+
     public partial class Game : Form
     {
-        class SudokuCell : Button
-        {
-            public int Value { get; set; }
-            public bool IsLocked { get; set; }
-            public int X { get; set; }
-            public int Y { get; set; }
-
-            public void Clear()
-            {
-                this.Text = string.Empty;
-                this.IsLocked = false;
-            }
-        }
 
         int difficulty;
-        public Game()
-        {
-            InitializeComponent();
-
-            createCells();
-        }
-
         SudokuCell[,] cells = new SudokuCell[9, 9];
-
         public Game(int outsideDifficulty)
         {
             difficulty = outsideDifficulty;
             InitializeComponent();
-        }
-        private void Game_Load(object sender, EventArgs e)
-        {
             createCells();
+
         }
+
         private void createCells()
         {
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    // Create 81 cells for with styles and locations based on the index
+
                     cells[i, j] = new SudokuCell();
                     cells[i, j].Font = new Font(SystemFonts.DefaultFont.FontFamily, 20);
                     cells[i, j].Size = new Size(40, 40);
@@ -70,7 +49,6 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
         private void cell_keyPressed(object sender, KeyPressEventArgs e)
         {
             var cell = sender as SudokuCell;
@@ -92,6 +70,11 @@ namespace WindowsFormsApp1
 
                 cell.ForeColor = SystemColors.ControlDarkDark;
             }
+        }
+
+        private void exit1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
