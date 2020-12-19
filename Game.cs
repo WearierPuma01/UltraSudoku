@@ -15,12 +15,16 @@ namespace WindowsFormsApp1
     {
 
         int difficulty;
+        int[,] matrix;
         SudokuCell[,] cells = new SudokuCell[9, 9];
         public Game(int outsideDifficulty)
         {
             difficulty = outsideDifficulty;
             InitializeComponent();
             createCells();
+            matrix=Generator.generator(difficulty);
+            loadField();
+
 
         }
 
@@ -72,6 +76,18 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void loadField()
+        {
+            for (int i=0;i<9;i++)
+                for(int j=0; j<9; j++)
+                {
+                    cells[i, j].Clear();
+                    cells[i, j].Value = matrix[i,j];
+                    cells[i, j].Text = cells[i, j].Value.ToString();
+                    if (matrix[i, j] != 0)
+                        cells[i, j].IsLocked = true;
+                }
+        }
         private void exit1_Click(object sender, EventArgs e)
         {
             Application.Exit();

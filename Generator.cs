@@ -9,9 +9,9 @@ namespace WindowsFormsApp1
     static class Generator
     {
         //Генерация базового поля
-        public static int[,] generator() //генерация базового поля [ok]
+        public static int[,] generator(int difficultyGrade) //генерация базового поля [ok]
         {
-            int[,] matrix = new int[9, 9];
+           int[,] matrix = new int[9, 9];
             int i = 0;
             List<int> listNumeral = new List<int> {1, 2, 3, 4, 5, 6, 7, 8, 9};
             while (i != 8)
@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
                 i %= 8;
                 for (int j = 0; j < 9; j++)
                 {
-                    matrix[i,j] = listNumeral[j];
+                    matrix[j,i] = listNumeral[j];
                 }
                 listNumeral.Add(listNumeral[0]);
                 listNumeral.RemoveAt(0);
@@ -27,11 +27,33 @@ namespace WindowsFormsApp1
             }
             for (int j = 0; j < 9; j++)
             {
-                matrix[i, j] = listNumeral[j];
+                matrix[j, i] = listNumeral[j];
             }
+            genField(matrix, difficultyGrade);
             return matrix;
         }
+        private static void genField(int[,] matrix, int difficultyGrade)
+        {
+            //matrixShafle(matrix);
+            deleteCell(matrix, difficultyGrade);
 
+        }
+        private static void matrixShafle(int[,] matrix) //Шафл всей матрицы
+        {
+            DateTime start = new DateTime();
+            
+            for (int i = 0; i <= start.Second; i++)
+            {
+                transposing(matrix, (start.Day % 2));
+                swapRowsSmall(matrix, (start.Hour % 3), (start.Minute % 3));
+                transposing(matrix, (start.Hour % 2));
+                swapColumsSmall(matrix, (start.Year % 3), (start.Minute % 3));
+                transposing(matrix, (start.Second % 2));
+                swapRowsArea(matrix, (start.Minute % 3), (start.Second % 3));
+                transposing(matrix, (start.Minute % 2));
+                swapColumsArea(matrix, (start.Year % 3), (start.Second % 3));
+            } 
+        }
         //Алгоритмы шафла базовой матрицы [ok]
         private static void transposing(int[,] matrix, int number) //транспонирование матрицы [ok]
         {
@@ -139,13 +161,13 @@ namespace WindowsFormsApp1
             {
                 while (true)
                 {
-                    cordsToDel = listCords[delRan.Next(0, listCords.Count)];
-                    temp = matrix[cordsToDel / 10, cordsToDel % 10];
-                    matrix[cordsToDel / 10, cordsToDel % 10] = 0;
+                    cordsToDel = listCords[delRan.Next(0, listCords.Count())];
+                    temp = matrix[cordsToDel / 10-1, cordsToDel % 10-1];
+                    matrix[cordsToDel / 10-1, cordsToDel % 10-1] = 0;
                     listCords.Remove(cordsToDel);
                     if (Solver.countOfSolves(matrix))
                         break;
-                    matrix[cordsToDel / 10, cordsToDel % 10] = temp;
+                    matrix[cordsToDel / 10-1, cordsToDel % 10-1] = temp;
                 }
             }
         }
