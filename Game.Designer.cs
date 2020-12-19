@@ -58,6 +58,7 @@
             this.help.TabIndex = 1;
             this.help.Text = "Подсказка";
             this.help.UseVisualStyleBackColor = true;
+            this.help.Click += new System.EventHandler(this.help_Click);
             // 
             // Game
             // 

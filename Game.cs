@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
 
         int difficulty;
         int[,] matrix;
+        int[,] matrixHelp;
         SudokuCell[,] cells = new SudokuCell[9, 9];
         public Game(int outsideDifficulty)
         {
@@ -23,6 +24,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             createCells();
             matrix=Generator.generator(difficulty);
+            matrixHelp=Solver.sudokuHelper(matrix);
             loadField();
 
 
@@ -70,10 +72,13 @@ namespace WindowsFormsApp1
                 if (value == 0)
                     cell.Clear();
                 else
+                {
                     cell.Text = value.ToString();
-
+                }
+                cell.Value = value;
                 cell.ForeColor = Color.Black;
             }
+            checkComplete();
         }
 
         private void loadField()
@@ -93,5 +98,37 @@ namespace WindowsFormsApp1
         {
             Application.Exit();
         }
+
+        private void help_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++)
+                    if (cells[i, j].Value == 0)
+                    {
+                        cells[i, j].Value = matrixHelp[i, j];
+                        cells[i, j].Text = cells[i, j].Value.ToString();
+                        cells[i, j].ForeColor = Color.Black;
+                        checkComplete();
+                        return;
+                    }
+            
+        }
+        private void checkComplete()
+        {
+            for (int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++)
+                    if (matrixHelp[i, j] != cells[i, j].Value)
+                        return;
+            for (int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++)
+                {
+                    cells[i, j].IsLocked = true;
+                    cells[i, j].ForeColor = Color.Green;
+                }
+            WinForm winform = new WinForm();
+            winform.ShowDialog();
+
+        }
+        //private void checkCorrect
     }
 }

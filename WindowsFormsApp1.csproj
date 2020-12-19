@@ -86,6 +86,12 @@
     <Compile Include="SudokuCell.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForm.Designer.cs">
+      <DependentUpon>WinForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Difficulty.resx">
       <DependentUpon>Difficulty.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,7 +109,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WinForm.resx">
+      <DependentUpon>WinForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -128,6 +138,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WIN.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

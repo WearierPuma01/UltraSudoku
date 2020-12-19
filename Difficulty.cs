@@ -50,6 +50,7 @@ namespace WindowsFormsApp1
                     break;
             }
             this.Hide();
+            this.Close();
             Game game = new Game(difficulty);
             game.ShowDialog();
         }
