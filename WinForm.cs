@@ -12,10 +12,13 @@ namespace WindowsFormsApp1
 {
     public partial class WinForm : Form
     {
-        int tmp = 0;
-        public WinForm()
+        //int tmp = 0;
+        
+        public WinForm( )
         {
             InitializeComponent();
+            
+
         }
 
         private void win_Click(object sender, EventArgs e)
@@ -35,10 +38,8 @@ namespace WindowsFormsApp1
             this.Close();
             
             MainMenu mainmenu = new MainMenu();
-            Game game = new Game(tmp);
-            game.Hide();
-            game.Dispose();
-            game.Close();
+            
+           
             
             mainmenu.ShowDialog();
         }

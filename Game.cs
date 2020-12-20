@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         int[,] matrix;
         int[,] matrixHelp;
         SudokuCell[,] cells = new SudokuCell[9, 9];
+        WinForm winform = new WinForm();
         public Game(int outsideDifficulty)
         {
             difficulty = outsideDifficulty;
@@ -48,7 +49,7 @@ namespace WindowsFormsApp1
                     cells[i, j].X = i;
                     cells[i, j].Y = j;
 
-                    // Assign key press event for each cells
+                    
                     cells[i, j].KeyPress += cell_keyPressed;
 
                     panel1.Controls.Add(cells[i, j]);
@@ -59,16 +60,16 @@ namespace WindowsFormsApp1
         {
             var cell = sender as SudokuCell;
 
-            // Do nothing if the cell is locked
+            
             if (cell.IsLocked)
                 return;
 
             int value;
 
-            // Add the pressed key value in the cell only if it is a number
+          
             if (int.TryParse(e.KeyChar.ToString(), out value))
             {
-                // Clear the cell value if pressed key is zero
+                
                 if (value == 0)
                     cell.Clear();
                 else
@@ -76,9 +77,11 @@ namespace WindowsFormsApp1
                     cell.Text = value.ToString();
                 }
                 cell.Value = value;
-                cell.ForeColor = Color.Black;
+                //cell.ForeColor = Color.Black;
             }
             checkComplete();
+            checkCorrect(cell.X, cell.Y);
+            
         }
 
         private void loadField()
@@ -108,7 +111,8 @@ namespace WindowsFormsApp1
                         cells[i, j].Value = matrixHelp[i, j];
                         cells[i, j].Text = cells[i, j].Value.ToString();
                         cells[i, j].ForeColor = Color.Black;
-                        checkComplete();
+                        checkCorrect(i, j);
+                        
                         return;
                     }
             
@@ -125,10 +129,99 @@ namespace WindowsFormsApp1
                     cells[i, j].IsLocked = true;
                     cells[i, j].ForeColor = Color.Green;
                 }
-            WinForm winform = new WinForm();
-            winform.ShowDialog();
+            
+            winform.ShowDialog(this);
 
         }
-        //private void checkCorrect
+        private void checkCorrect(int i, int j)
+        {
+            bool checkCurrent = false;
+        
+
+                
+        
+            for (int col = 0; col < 9; col++)
+            {
+                if (col == j)
+                    continue;
+                if (cells[i, j].Value == cells[i, col].Value)
+                {
+                    if (cells[i, j].IsLocked)
+                        cells[i, j].ForeColor = Color.DarkRed;
+                    else
+                        cells[i, j].ForeColor = Color.Red;
+                    if (cells[i, col].IsLocked)
+                        cells[i, col].ForeColor = Color.DarkRed;
+                    else
+                        cells[i, col].ForeColor = Color.Red;
+                    checkCurrent = true;
+                }
+                else
+                {
+                    if (cells[i, col].IsLocked)
+                        cells[i, col].ForeColor = SystemColors.ControlDarkDark;
+                    else
+                        cells[i, col].ForeColor = Color.Black;
+                }
+            }
+
+            for (int row = 0; row < 9; row++)
+            {
+                if (row == i)
+                    continue;
+                if (cells[i, j].Value == cells[row, j].Value)
+                {
+                    if (cells[i, j].IsLocked)
+                        cells[i, j].ForeColor = Color.DarkRed;
+                    else
+                        cells[i, j].ForeColor = Color.Red;
+                    if (cells[row, j].IsLocked)
+                        cells[row, j].ForeColor = Color.DarkRed;
+                    else
+                        cells[row, j].ForeColor = Color.Red;
+                    checkCurrent = true;
+                }
+                else
+                {
+                    if (cells[row, j].IsLocked)
+                        cells[row, j].ForeColor = SystemColors.ControlDarkDark;
+                    else
+                        cells[row, j].ForeColor = Color.Black;
+                }
+            }
+
+            for (int row = 0; row < 3; row++)
+                for (int col = 0; col < 3; col++)
+                {
+                    if (i == row + i - (i % 3) && j == col + j - (j % 3))
+                        continue;
+                    if (cells[i, j].Value == cells[row + i - (i % 3), col + j - (j % 3)].Value)
+                    {
+                        if (cells[i, j].IsLocked)
+                            cells[i, j].ForeColor = Color.DarkRed;
+                        else
+                            cells[i, j].ForeColor = Color.Red;
+                        if (cells[row + i - (i % 3), col + j - (j % 3)].IsLocked)
+                            cells[row + i - (i % 3), col + j - (j % 3)].ForeColor = Color.DarkRed;
+                        else
+                            cells[row + i - (i % 3), col + j - (j % 3)].ForeColor = Color.Red;
+                        checkCurrent = true;
+                    }
+                    else
+                    {
+                        if (cells[row + i - (i % 3), col + j - (j % 3)].IsLocked)
+                            cells[row + i - (i % 3), col + j - (j % 3)].ForeColor = SystemColors.ControlDarkDark;
+                        else
+                            cells[row + i - (i % 3), col + j - (j % 3)].ForeColor = Color.Black;
+                    }
+                }
+            if (checkCurrent)
+                cells[i, j].ForeColor = Color.Red;
+            else
+                cells[i, j].ForeColor = Color.Black;
+            
+        }
+        
+        
     }
 }
