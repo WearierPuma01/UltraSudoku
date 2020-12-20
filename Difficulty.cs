@@ -49,10 +49,20 @@ namespace WindowsFormsApp1
                     difficulty = 5;
                     break;
             }
+            int[,] matrix = Generator.generator(difficulty);
             this.Hide();
             this.Close();
-            Game game = new Game(difficulty);
+
+            Game game = new Game(matrix);
             game.ShowDialog();
+        }
+
+        private void userGame_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Close();
+            UserField uf = new UserField();
+            uf.ShowDialog();
         }
     }
 }

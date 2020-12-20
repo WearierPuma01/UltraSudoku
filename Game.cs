@@ -14,17 +14,18 @@ namespace WindowsFormsApp1
     public partial class Game : Form
     {
 
-        int difficulty;
+        //int difficulty;
         int[,] matrix;
         int[,] matrixHelp;
         SudokuCell[,] cells = new SudokuCell[9, 9];
         WinForm winform = new WinForm();
-        public Game(int outsideDifficulty)
+        public Game(/*int outsideDifficulty*/int [,] matrixInput)
         {
-            difficulty = outsideDifficulty;
+            matrix = matrixInput;
+           // difficulty = outsideDifficulty;
             InitializeComponent();
             createCells();
-            matrix=Generator.generator(difficulty);
+            //matrix=Generator.generator(difficulty);
             matrixHelp=Solver.sudokuHelper(matrix);
             loadField();
 
@@ -111,6 +112,7 @@ namespace WindowsFormsApp1
                         cells[i, j].Value = matrixHelp[i, j];
                         cells[i, j].Text = cells[i, j].Value.ToString();
                         cells[i, j].ForeColor = Color.Black;
+                        checkComplete();
                         checkCorrect(i, j);
                         
                         return;

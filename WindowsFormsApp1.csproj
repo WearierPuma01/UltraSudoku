@@ -86,6 +86,12 @@
     <Compile Include="SudokuCell.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserField.Designer.cs">
+      <DependentUpon>UserField.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserField.resx">
+      <DependentUpon>UserField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinForm.resx">
       <DependentUpon>WinForm.cs</DependentUpon>
     </EmbeddedResource>
