@@ -16,7 +16,11 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Элемент интерфейса по выбору сложности
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (checkedListBox1.CheckedItems.Count > 1)
@@ -26,7 +30,11 @@ namespace WindowsFormsApp1
                 checkedListBox1.SetItemChecked(checkedListBox1.SelectedIndex, true);
             }
         }
-
+        /// <summary>
+        /// Обработчик события клика на кнопку, после выбора сложности
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (checkedListBox1.CheckedIndices.Count == 0) return;
@@ -56,7 +64,11 @@ namespace WindowsFormsApp1
             Game game = new Game(matrix);
             game.ShowDialog();
         }
-
+        /// <summary>
+        /// Обработчик события клика на кнопку для после выбора пользовательского поля
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void userGame_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -64,7 +76,11 @@ namespace WindowsFormsApp1
             UserField uf = new UserField();
             uf.ShowDialog();
         }
-
+        /// <summary>
+        /// Обработчик события клика на кнопку выхода из приложения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void eX_Click(object sender, EventArgs e)
         {
             Application.Exit();

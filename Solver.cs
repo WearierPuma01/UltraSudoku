@@ -7,10 +7,17 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-
-    static class Solver //решатель
+    /// <summary>
+    /// Статический класс, решающий судоку 
+    /// </summary>
+    static class Solver 
     {
-        public static bool countOfSolves(int[,] matrix) //проверка наличия решения и его единственность [ok]
+        /// <summary>
+        /// Проверка наличия решения и его единственность
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns></returns>
+        public static bool countOfSolves(int[,] matrix) 
         {
             int count_of_solves = 0;
             cOS(matrix, ref count_of_solves);
@@ -19,8 +26,12 @@ namespace WindowsFormsApp1
             else
                 return false;
         }
-
-        public static int[,] sudokuHelper (int[,] matrix_input) //решение поля судоку (возвращает решенную матрицу судоку, не изменяет изначальной) [ok]
+        /// <summary>
+        /// Решение поля судоку (возвращает решенную матрицу судоку, не изменяет изначальной)
+        /// </summary>
+        /// <param name="matrix_input"></param>
+        /// <returns></returns>
+        public static int[,] sudokuHelper (int[,] matrix_input) 
         {
             //int[,] matrix = matrix_input;
             int[,] matrix = new int[9, 9];
@@ -30,8 +41,13 @@ namespace WindowsFormsApp1
             sHelper(matrix);
             return matrix;
         }
-       
-        private static bool cOS(int[,] matrix_input, ref int count_of_solves) //подсчет количества решений [ok] 
+        /// <summary>
+        /// Подсчет количества решений
+        /// </summary>
+        /// <param name="matrix_input"></param>
+        /// <param name="count_of_solves"></param>
+        /// <returns></returns>
+        private static bool cOS(int[,] matrix_input, ref int count_of_solves) 
         {
             
             int[,] matrix = matrix_input;
@@ -54,8 +70,12 @@ namespace WindowsFormsApp1
             }
             return false;
         }
-
-        private static bool sHelper(int[,] matrix) //решатель поля судоку (правильная работа, только при условии что поле верно) [!!! ПРОВЕРИТЬ АЛГОРИТМ !!!]
+        /// <summary>
+        /// Решатель поля судоку (правильная работа, только при условии что поле верно)
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns></returns>
+        private static bool sHelper(int[,] matrix)
         {
             int row = 0, col = 0;
             if (!findEmptyCords(matrix, out row, out col))
@@ -74,8 +94,14 @@ namespace WindowsFormsApp1
             }
             return false;
         }
-
-        private static bool findEmptyCords (int[,] matrix, out int row, out int col) //нахождение пустой клетки [ok]
+        /// <summary>
+        /// Нахождение пустой клетки
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <returns></returns>
+        private static bool findEmptyCords (int[,] matrix, out int row, out int col)
         {
             col = 0;
             for (row = 0; row < 9; row++)
@@ -84,29 +110,56 @@ namespace WindowsFormsApp1
                         return true;
             return false;
         }
-
-        private static bool isCorrectNum (int[,] matrix, int row, int col, int num) //проверка числа на возможнось расположения в выбранной ячейке [ok]
+        /// <summary>
+        /// Проверка числа на возможнось расположения в выбранной ячейке
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        private static bool isCorrectNum (int[,] matrix, int row, int col, int num)
         {
 
             return !placeInRow(matrix, row, num) && !placeInCol(matrix, col, num) && !placeInBox(matrix, row - row % 3, col - col % 3, num) && matrix[row, col] == 0;
         }
-        private static bool placeInRow (int[,] matrix, int row, int num) //проверка на наличие числа в строке [ok]
+        /// <summary>
+        /// Проверка на наличие числа в строке
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="row"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        private static bool placeInRow (int[,] matrix, int row, int num) 
         {
             for (int col = 0; col < 9; col++)
                 if (matrix[row, col] == num)
                     return true;
             return false;
         }
-
-        private static bool placeInCol (int[,] matrix, int col, int num) //проверка на наличие числа в столбце [ok]
+        /// <summary>
+        /// Проверка на наличие числа в столбце
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="col"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        private static bool placeInCol (int[,] matrix, int col, int num)
         {
             for (int row = 0; row < 9; row++)
                 if (matrix[row, col] == num)
                     return true;
             return false;
         }
-
-        private static bool placeInBox (int[,] matrix, int box_start_row, int box_start_col, int num) //проверка на наличие числа в боксе [ok]
+        /// <summary>
+        /// Проверка на наличие числа в боксе
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="box_start_row"></param>
+        /// <param name="box_start_col"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        private static bool placeInBox (int[,] matrix, int box_start_row, int box_start_col, int num)
         {
             for (int row = 0; row < 3; row++)
                 for (int col = 0; col < 3; col++)

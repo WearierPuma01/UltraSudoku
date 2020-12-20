@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    /// <summary>
+    /// Статический класс, ответственый за генерацию поля
+    /// </summary>
     static class Generator
     {
-        //Генерация базового поля
-        public static int[,] generator(int difficultyGrade) //генерация базового поля [ok]
+        /// <summary>
+        /// Генерация базового поля
+        /// </summary>
+        /// <param name="difficultyGrade"></param>
+        /// <returns></returns>
+        public static int[,] generator(int difficultyGrade) 
         {
            int[,] matrix = new int[9, 9];
             int i = 0;
@@ -35,10 +42,14 @@ namespace WindowsFormsApp1
         private static void genField(int[,] matrix, int difficultyGrade)
         {
             matrixShafle(matrix);
-          deleteCell(matrix, difficultyGrade);
+            deleteCell(matrix, difficultyGrade);
 
         }
-        private static void matrixShafle(int[,] matrix) //Шафл всей матрицы
+        /// <summary>
+        /// Шафл всей базовой матрицы
+        /// </summary>
+        /// <param name="matrix"></param>
+        private static void matrixShafle(int[,] matrix)
         {
             DateTime start =  DateTime.Now;
             transposing(matrix, (start.Second % 2));
@@ -59,8 +70,12 @@ namespace WindowsFormsApp1
                 transposing(matrix, i % 2);
             }
         }
-        //Алгоритмы шафла базовой матрицы [ok]
-        private static void transposing(int[,] matrix, int number) //транспонирование матрицы [ok]
+        /// <summary>
+        /// Транспонирование матрицы 
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="number"></param>
+        private static void transposing(int[,] matrix, int number) 
         {
             if (number == 0) return ;
             int temp;
@@ -75,8 +90,13 @@ namespace WindowsFormsApp1
             }
             
         }
-
-        private static void swapRowsSmall(int[,] matrix, int number_one, int number_two) //перестановка строк [ok]
+        /// <summary>
+        /// Перестановка строк
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="number_one"></param>
+        /// <param name="number_two"></param>        
+        private static void swapRowsSmall(int[,] matrix, int number_one, int number_two) 
         {
             int temp;
             for (int i = 0; i < 9; i++)
@@ -87,8 +107,13 @@ namespace WindowsFormsApp1
             }
             
         }
-
-        private static void swapColumsSmall(int[,] matrix, int number_one, int number_two) //перестановка столбцов [ok]
+        /// <summary>
+        /// Перестановка столбцов
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="number_one"></param>
+        /// <param name="number_two"></param>
+        private static void swapColumsSmall(int[,] matrix, int number_one, int number_two) 
         {
             int temp;
             for (int i = 0; i < 9; i++)
@@ -98,8 +123,13 @@ namespace WindowsFormsApp1
                 matrix[i, number_two] = temp;
             }
         }
-
-        private static void swapRowsArea(int[,] matrix, int number_one, int number_two) //перестановкак зон(строк) [ok]
+        /// <summary>
+        /// Перестановкак зон(строк)
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="number_one"></param>
+        /// <param name="number_two"></param>
+        private static void swapRowsArea(int[,] matrix, int number_one, int number_two)
         {
             int temp1, temp2, temp3;
             for (int i = 0; i < 9; i++)
@@ -115,8 +145,13 @@ namespace WindowsFormsApp1
                 matrix[number_two * 3 + 2, i] = temp3;
             }
         }
-
-        private static void swapColumsArea(int[,] matrix, int number_one, int number_two) //перестановка зон(строк) [ok]
+        /// <summary>
+        /// Перестановка зон(строк)
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="number_one"></param>
+        /// <param name="number_two"></param>
+        private static void swapColumsArea(int[,] matrix, int number_one, int number_two) 
         {
             int temp1, temp2, temp3;
             for (int i = 0; i < 9; i++)
@@ -132,8 +167,12 @@ namespace WindowsFormsApp1
                 matrix[i, number_two * 3 + 2] = temp3;
             }
         }
-        
-        private static void deleteCell(int[,] matrix, int difficultyGrade) //удаление элементов в зависимости от выбранной сложности [!!! ok НО МОЖНО И ПРОВЕРИТЬ !!!]
+        /// <summary>
+        /// Удаление элементов в зависимости от выбранной сложности
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="difficultyGrade"></param>
+        private static void deleteCell(int[,] matrix, int difficultyGrade)
         {
             int temp, cordsToDel, difficulty=0;
             List<int> listCords = new List<int> { };
