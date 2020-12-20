@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.exit1 = new System.Windows.Forms.Button();
             this.help = new System.Windows.Forms.Button();
+            this.checkerCorret = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel1
@@ -60,11 +61,22 @@
             this.help.UseVisualStyleBackColor = true;
             this.help.Click += new System.EventHandler(this.help_Click);
             // 
+            // checkerCorret
+            // 
+            this.checkerCorret.Location = new System.Drawing.Point(481, 217);
+            this.checkerCorret.Name = "checkerCorret";
+            this.checkerCorret.Size = new System.Drawing.Size(120, 50);
+            this.checkerCorret.TabIndex = 2;
+            this.checkerCorret.Text = "Проверка";
+            this.checkerCorret.UseVisualStyleBackColor = true;
+            this.checkerCorret.Click += new System.EventHandler(this.checkerCorret_Click);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 411);
+            this.Controls.Add(this.checkerCorret);
             this.Controls.Add(this.help);
             this.Controls.Add(this.exit1);
             this.Controls.Add(this.panel1);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button exit1;
         private System.Windows.Forms.Button help;
+        private System.Windows.Forms.Button checkerCorret;
     }
 }

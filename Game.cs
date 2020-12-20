@@ -221,7 +221,22 @@ namespace WindowsFormsApp1
                 cells[i, j].ForeColor = Color.Black;
             
         }
-        
-        
+
+        private void checkerCorret_Click(object sender, EventArgs e)
+        {
+            for(int i=0; i<9; i++)
+                for(int j=0;j<9;j++)
+                {
+                    if (cells[i, j].Value == 0)
+                        continue;
+                    if (cells[i, j].Value!=matrixHelp[i,j])
+                    {
+                        MessageBox.Show("Собрать судоку невозможно!", "Проверка", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
+            MessageBox.Show("Собрать судоку возможно!", "Проверка", MessageBoxButtons.OK);
+            return;
+        }
     }
 }
