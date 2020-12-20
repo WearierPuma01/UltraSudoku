@@ -31,7 +31,9 @@ namespace WindowsFormsApp1
 
 
         }
-
+        /// <summary>
+        /// Создает поле
+        /// </summary>
         private void createCells()
         {
             for (int i = 0; i < 9; i++)
@@ -57,6 +59,11 @@ namespace WindowsFormsApp1
                 }
             }
         }
+        /// <summary>
+        /// Позволяет заполнять поле
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cell_keyPressed(object sender, KeyPressEventArgs e)
         {
             var cell = sender as SudokuCell;
@@ -84,7 +91,9 @@ namespace WindowsFormsApp1
             checkCorrect(cell.X, cell.Y);
             
         }
-
+        /// <summary>
+        /// Заполняет поле
+        /// </summary>
         private void loadField()
         {
             for (int i=0;i<9;i++)
@@ -98,11 +107,20 @@ namespace WindowsFormsApp1
                         cells[i, j].IsLocked = true;
                 }
         }
+        /// <summary>
+        /// Кнопка выхода
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exit1_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
+        /// <summary>
+        /// Кнопка помощи
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void help_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 9; i++)
@@ -119,6 +137,9 @@ namespace WindowsFormsApp1
                     }
             
         }
+        /// <summary>
+        /// Проверка решено ли судоку
+        /// </summary>
         private void checkComplete()
         {
             for (int i = 0; i < 9; i++)
@@ -135,6 +156,11 @@ namespace WindowsFormsApp1
             winform.ShowDialog();
 
         }
+        /// <summary>
+        /// Проверка правильности введённого значения
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
         private void checkCorrect(int i, int j)
         {
             bool checkCurrent = false;
@@ -223,7 +249,11 @@ namespace WindowsFormsApp1
                 cells[i, j].ForeColor = Color.Black;
             
         }
-
+        /// <summary>
+        /// Кнопка проверки возможности сборки судоку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkerCorret_Click(object sender, EventArgs e)
         {
             for(int i=0; i<9; i++)

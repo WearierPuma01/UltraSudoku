@@ -25,12 +25,20 @@ namespace WindowsFormsApp1
         {
 
         }
-
+        /// <summary>
+        /// Кнопка выхода
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
+        /// <summary>
+        /// Кнопка главного меню
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mainmenu_Click(object sender, EventArgs e)
         {
             this.Hide();

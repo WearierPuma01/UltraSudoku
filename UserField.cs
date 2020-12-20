@@ -20,6 +20,9 @@ namespace WindowsFormsApp1
             createCells();
           
         }
+        /// <summary>
+        /// Создает поле
+        /// </summary>
         private void createCells()
         {
             for (int i = 0; i < 9; i++)
@@ -45,6 +48,11 @@ namespace WindowsFormsApp1
                 }
             }
         }
+        /// <summary>
+        /// Позволяет заполнять поле
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cell_keyPressed(object sender, KeyPressEventArgs e)
         {
             var cell = sender as SudokuCell;
@@ -72,7 +80,11 @@ namespace WindowsFormsApp1
            
 
         }
-
+        /// <summary>
+        /// Проверка наличия единственного решения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ifCorrect_Click(object sender, EventArgs e)
         {
             if(Solver.countOfSolves(matrix))

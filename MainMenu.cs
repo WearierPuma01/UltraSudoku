@@ -9,12 +9,20 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Кнопка выхода
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
+        /// <summary>
+        /// Кнопка начла игры
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -22,7 +30,11 @@ namespace WindowsFormsApp1
             difficulty.ShowDialog();
 
         }
-
+        /// <summary>
+        /// Кнопка статистики
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("В разработке", "Статистика", MessageBoxButtons.OK);
