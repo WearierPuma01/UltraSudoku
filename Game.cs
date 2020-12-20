@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         int[,] matrix;
         int[,] matrixHelp;
         SudokuCell[,] cells = new SudokuCell[9, 9];
-        WinForm winform = new WinForm();
+        
         public Game(/*int outsideDifficulty*/int [,] matrixInput)
         {
             matrix = matrixInput;
@@ -131,8 +131,8 @@ namespace WindowsFormsApp1
                     cells[i, j].IsLocked = true;
                     cells[i, j].ForeColor = Color.Green;
                 }
-            
-            winform.ShowDialog(this);
+            WinForm winform = new WinForm(Form.ActiveForm);
+            winform.ShowDialog();
 
         }
         private void checkCorrect(int i, int j)

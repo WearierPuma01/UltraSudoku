@@ -22,5 +22,10 @@ namespace WindowsFormsApp1
             difficulty.ShowDialog();
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("В разработке", "Статистика", MessageBoxButtons.OK);
+        }
     }
 }

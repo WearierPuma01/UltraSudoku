@@ -13,11 +13,11 @@ namespace WindowsFormsApp1
     public partial class WinForm : Form
     {
         //int tmp = 0;
-        
-        public WinForm( )
+        Form game;
+        public WinForm(Form gameWindow)
         {
             InitializeComponent();
-            
+            game = gameWindow;
 
         }
 
@@ -38,10 +38,13 @@ namespace WindowsFormsApp1
             this.Close();
             
             MainMenu mainmenu = new MainMenu();
-            
+            game.Hide();
+            game.Dispose();
+            game.Close();
            
             
             mainmenu.ShowDialog();
+            return;
         }
     }
 }

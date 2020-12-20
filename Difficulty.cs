@@ -64,5 +64,10 @@ namespace WindowsFormsApp1
             UserField uf = new UserField();
             uf.ShowDialog();
         }
+
+        private void eX_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

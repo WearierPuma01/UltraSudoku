@@ -32,6 +32,7 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.userGame = new System.Windows.Forms.Button();
+            this.eX = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -83,11 +84,22 @@
             this.userGame.UseVisualStyleBackColor = true;
             this.userGame.Click += new System.EventHandler(this.userGame_Click);
             // 
+            // eX
+            // 
+            this.eX.Location = new System.Drawing.Point(71, 299);
+            this.eX.Name = "eX";
+            this.eX.Size = new System.Drawing.Size(120, 50);
+            this.eX.TabIndex = 4;
+            this.eX.Text = "Выход";
+            this.eX.UseVisualStyleBackColor = true;
+            this.eX.Click += new System.EventHandler(this.eX_Click);
+            // 
             // Difficulty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(248, 366);
+            this.Controls.Add(this.eX);
             this.Controls.Add(this.userGame);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkedListBox1);
@@ -108,5 +120,6 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button userGame;
+        private System.Windows.Forms.Button eX;
     }
 }
