@@ -36,6 +36,8 @@ namespace WindowsFormsApp1
             
             int[,] matrix = matrix_input;
             int row = 0, col = 0;
+            if (count_of_solves > 1)
+                return false;
             if (!findEmptyCords(matrix, out row, out col))
             {
                 count_of_solves++;
